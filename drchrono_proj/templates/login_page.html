@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DrChrono Hack - Home</title>
+    <title>Dr.Chrono Dashboard - Login Page</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap-4.4.1.css'}" rel="stylesheet">
+    
+	<!-- Django -->
+  {% load bootstrap4 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+	<!-- End of Django -->
 
-    <!-- Django -->
-    {% load bootstrap4 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
   </head>
   <body>
     <div class="jumbotron jumbotron-fluid text-center">
-       <h1 class="display-4">Dr Chrono Hackathon</h1>
-       <p class="lead">Display Data from SQLite</p>
+       <h1 class="display-4">Dr. Chrono Login</h1>
+       <p class="lead">Description</p>
        <hr class="my-4">
-	  </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <script src="{% static 'js/jquery-3.4.1.min.js'}"></script>
+       <p><a class="btn btn-primary btn-lg" href="{% url 'drchrono:home' %}" role="button">Login with Dr Chrono</a><br>
+		   Don't have an account? <a href="https://www.drchrono.com/sign-up/"> Sign up here!</a>
+		</p>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{& static 'js/jquery-3.4.1.min.js'}"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
     <script src="{% static 'js/popper.min.js'}"></script>

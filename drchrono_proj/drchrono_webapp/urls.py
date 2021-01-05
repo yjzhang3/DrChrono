@@ -1,9 +1,9 @@
 from django.urls import path
-from drchrono_webapp.views import home_page
+from drchrono_webapp.views import login_page, home_page
 
 app_name = 'drchrono'
 urlpatterns = [
-    path('', home_page, name="home")
-    # path('', index),
-    # path('', views.index, name='index'),
+    path('login', login_page, name="login"),
+    path('home', home_page, name="home"),
+    # path('', include('django.contrib.auth.urls')),
 ]

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dr.Chrono Dashboard - Home</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap-4.4.1.css'}" rel="stylesheet">
+	  
+	<!-- Django -->
+  {% load bootstrap4 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+	<!-- End of Django -->
+
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid text-center">
+       <h1 class="display-4">Dashboard</h1>
+       <p class="lead">You will see this after login with dr chrono</p>
+       <hr class="my-4">
+       <p>some sql and data analytics here for main page</p>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'js/jquery-3.4.1.min.js'}"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="{% static 'js/popper.min.js'}"></script>
+    <script src="{% static 'js/bootstrap-4.4.1.js'}"></script>
+  </body>
+</html>

@@ -40,11 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'oauth2_provider',
+    'rest_framework',
+    'django.contrib.sites',   # <--
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -72,6 +79,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'drchrono_proj.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework.authentication.SessionAuthentication', # To keep the Browsable API
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -86,6 +102,12 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend' # To keep the Browsable API
+    'oauth2_provider.backends.OAuth2Backend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -102,6 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = '/home_page.html'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
