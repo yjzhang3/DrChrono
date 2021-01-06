@@ -44,8 +44,9 @@ def home_page(request):
 	access_token = data['access_token']
 	refresh_token = data['refresh_token']
 	expires_timestamp = datetime.datetime.now(pytz.utc) + datetime.timedelta(seconds=data['expires_in'])
-	if request.method == 'GET':
-        	response = render(request, "login_success.html")
+	# print('---------CODE: ', code)
+	if code:
+        	response = render(request, "home.html")
 	else:
         	response = render(request, "login_fail.html")
 	return response

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'oauth2_provider',
     'rest_framework',
-    'django.contrib.sites',   # <--
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -104,7 +104,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend' # To keep the Browsable API
+    'django.contrib.auth.backends.ModelBackend', # To keep the Browsable API
     'oauth2_provider.backends.OAuth2Backend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
