@@ -44,7 +44,8 @@ def home_page(request):
 	access_token = data['access_token']
 	refresh_token = data['refresh_token']
 	expires_timestamp = datetime.datetime.now(pytz.utc) + datetime.timedelta(seconds=data['expires_in'])
-	# print('---------CODE: ', code)
+	print('---------CODE: ', code)
+	print('---------DATA: ', data)
 	if code:
         	response = render(request, "home.html")
 	else:
