@@ -19,7 +19,7 @@ def home_page(request):
 	response = requests.post('https://drchrono.com/o/token/', data={
     		'code': code,
     		'grant_type': 'authorization_code',
-    		'redirect_uri': 'http://127.0.0.1:8000/drchrono_webapp/home',
+    		'redirect_uri': 'http://127.0.0.1:8000/home',
     		'client_id': 'BjMyUxjjeZSDy61Y1ZdGBdhVch2yCSLv5w4fY4ae',
     		'client_secret': 'BGcAyd56sLYmr87v8IS1UrIZMn2fIK7ma9AIAiRX0Wo93Um2WIB1IdDZZ9OOZAjXkUKlBNahZL0qZgmAju0gHJVc4GwdZpcnR55Fd5ujraA4liBJehNwhWKmLLbOOiZD',
 	})
