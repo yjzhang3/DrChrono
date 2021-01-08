@@ -18,10 +18,19 @@
   </head>
   <body>
     <div class="jumbotron jumbotron-fluid text-center">
-       <h1 class="display-4">Dashboard</h1>
-       <p class="lead">You will see this after login with dr chrono</p>
+       <h1 class="display-4">Welcome Dr.{{ user.doctor_last_name }}</h1>
+       <p class="lead">Use this section for some dash board display?</p>
        <hr class="my-4">
-       <p>some sql and data analytics here for main page</p>
+       <p>--DATA FROM DOCTOR--</p>
+       <p>Doctor ID: {{ user.doctor_id }}</p>
+       <p>Doctor Name: {{ user.doctor_first_name }} {{ user.doctor_last_name }}</p>
+       <p>Doctor Email: {{ user.doctor_data_json.email }}</p>
+       <p>Doctor Specialty: {{ user.doctor_data_json.specialty }}</p>
+       <p>Doctor Job Title: {{ user.doctor_data_json.job_tite }}</p>
+       <p>Doctor Country: {{ user.doctor_data_json.country }}</p>
+       <p>Doctor Time Zone: {{ user.doctor_data_json.timezone }}</p>
+       <p>Doctor Practice Group: {{ user.doctor_data_json.practice_group }}<br /><br /></p>
+       <p>Doctor COMPLETE Data JSON<br />{{ user.doctor_data_json }}</p>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{% static 'js/jquery-3.4.1.min.js'}"></script>

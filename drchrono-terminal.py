@@ -19,6 +19,7 @@ def main_app(access_token, refresh_token):
             test_api_url = 'https://app.drchrono.com/api/patients'
             json_res = make_request(test_api_url, access_token)
             for i in range(len(json_res['results'])):
+                print()
                 for key, value in json_res['results'][i].items():
                     print(key, ":", value)
         elif option=='2':
