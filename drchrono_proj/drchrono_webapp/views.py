@@ -10,11 +10,11 @@ urllib3.disable_warnings()
 API_PATIENTS = 'https://app.drchrono.com/api/patients'
 API_DOCTOR = 'https://app.drchrono.com/api/doctors'
 
-CLIENT_ID = 'BjMyUxjjeZSDy61Y1ZdGBdhVch2yCSLv5w4fY4ae'
-CLIENT_SECRET = 'BGcAyd56sLYmr87v8IS1UrIZMn2fIK7ma9AIAiRX0Wo93Um2WIB1IdDZZ9OOZAjXkUKlBNahZL0qZgmAju0gHJVc4GwdZpcnR55Fd5ujraA4liBJehNwhWKmLLbOOiZD'
+CLIENT_ID = 'gCVCP45fvAZqwlQvB6d4CUqEFlonrXTCjbr90BLm'
+CLIENT_SECRET = 'ZvfvYGFNkabOPiLhQYlxacUWS8c1mA6Sc8Ec0XEaPhaYBCXMy1l89qyXDqMA8XbAQCHmnfuEf6BchB9WGBaeTTkpRe4B7Y9HlJVbAIR1NLVmkpwXQ3b0Vh3ax1LIQM3R'
 
-ACCESS_TOKEN_REN = 'deSRmIZ7Ece3ZfamL6PfOCj5CAYjI0'
-REFRESH_TOKEN_REN = 't2GzQlaQpXMCwEHrfUrcOMczf6eeLk'
+# ACCESS_TOKEN_REN = 'deSRmIZ7Ece3ZfamL6PfOCj5CAYjI0'
+# REFRESH_TOKEN_REN = 't2GzQlaQpXMCwEHrfUrcOMczf6eeLk'
 
 def make_request(url, access_token):
 	print("make_request called")
@@ -62,7 +62,7 @@ def home_page(request):
 	print('---------DATA: ', data)
 	
 	# connect api call data to data models
-	json_res = make_request(API_DOCTOR, ACCESS_TOKEN_REN) # --!
+	json_res = make_request(API_DOCTOR, data['access_token']) # --!
 	print(json_res)
 	doctor, new_doc_obj = DoctorInformation.objects.update_or_create(
 		doctor_id=json_res['results'][0]['id'],
@@ -73,7 +73,7 @@ def home_page(request):
 	doctor.save()
 	print("DOCTOR INFO: ", doctor)
 	
-	json_res = make_request(API_PATIENTS, ACCESS_TOKEN_REN) # --!
+	json_res = make_request(API_PATIENTS, data['access_token']) # --!
 	for i in range(len(json_res['results'])):
 		print('PATIENT ', i)
 		for key, value in json_res['results'][i].items():
