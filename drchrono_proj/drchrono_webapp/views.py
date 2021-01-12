@@ -13,22 +13,14 @@ API_DOCTOR = 'https://app.drchrono.com/api/doctors'
 CLIENT_ID = 'gCVCP45fvAZqwlQvB6d4CUqEFlonrXTCjbr90BLm'
 CLIENT_SECRET = 'ZvfvYGFNkabOPiLhQYlxacUWS8c1mA6Sc8Ec0XEaPhaYBCXMy1l89qyXDqMA8XbAQCHmnfuEf6BchB9WGBaeTTkpRe4B7Y9HlJVbAIR1NLVmkpwXQ3b0Vh3ax1LIQM3R'
 
-# ACCESS_TOKEN_REN = 'deSRmIZ7Ece3ZfamL6PfOCj5CAYjI0'
-# REFRESH_TOKEN_REN = 't2GzQlaQpXMCwEHrfUrcOMczf6eeLk'
-
 def make_request(url, access_token):
 	print("make_request called")
 	api_call_headers = {'Authorization': 'Bearer ' + access_token}
 	api_call_response = requests.get(url, headers=api_call_headers, verify=False)
 	# api_json = api_call_response.json()
+	print('------------Response Code', api_call_response)
 	api_json = api_call_response.json()
 	return api_json
-	# if api_json:
-	# 	print("make_request finished:	Not Empty")
-	# 	return api_json
-	# else:
-	# 	print("make_request finished:	Empty")
-	# 	return {}
 
 def login_page(request, ):
     response = render(request, "login_page.html")
