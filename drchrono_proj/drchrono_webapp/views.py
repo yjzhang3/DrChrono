@@ -62,7 +62,7 @@ def home_page(request):
 	print('---------DATA: ', data)
 	
 	# connect api call data to data models
-	json_res = make_request(API_DOCTOR, data['access_token']) # --!
+	json_res = make_request(API_DOCTOR, access_token) # --!
 	print(json_res)
 	doctor, new_doc_obj = DoctorInformation.objects.update_or_create(
 		doctor_id=json_res['results'][0]['id'],
@@ -73,7 +73,7 @@ def home_page(request):
 	doctor.save()
 	print("DOCTOR INFO: ", doctor)
 	
-	json_res = make_request(API_PATIENTS, data['access_token']) # --!
+	json_res = make_request(API_PATIENTS, access_token) # --!
 	for i in range(len(json_res['results'])):
 		print('PATIENT ', i)
 		for key, value in json_res['results'][i].items():
