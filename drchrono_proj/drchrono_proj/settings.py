@@ -29,7 +29,7 @@ SECRET_KEY = 'aepb5l&$l6_)_k-&drv2a_(@g6+&e37c)7i6+(y=5@v%&ryc!z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['herokudjangoapp.drdash.com']
+ALLOWED_HOSTS = ['drdash.drchrono_webapp.com']
 
 
 # Application definition
@@ -160,13 +160,14 @@ SCRIPTS = [
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
 # Heroku Deployment
 # django_heroku.settings(locals())
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
