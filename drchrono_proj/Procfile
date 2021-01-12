@@ -1,1 +1,1 @@
-web: gunicorn drchrono_proj.wsgi --log-file -
+web: python3 manage.py runserver -noreload
