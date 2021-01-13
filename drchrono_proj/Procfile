@@ -1,1 +1,2 @@
-web: gunicorn drchrono_proj.wgsi --log-file -
+release: python3 manage.py migrate
+web: gunicorn drchrono_proj.wgsi --preload --log-file -
