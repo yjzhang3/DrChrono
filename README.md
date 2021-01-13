@@ -4,7 +4,8 @@
 
 Clone into a directory
 ```
-git clone https://github.com/MemphisMeng/DrChrono.git
+git clone https://github.com/yjzhang3/DrChrono.git
+cd drchrono_proj
 ```
 
 Activate virtual environment and required libraries
@@ -15,6 +16,5 @@ pip3 install -r requirements.txt
 
 Launch Web App
 ```
-cd drchrono_proj
 python3 manage.py runserver
 ```
