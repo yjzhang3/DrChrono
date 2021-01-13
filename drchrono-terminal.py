@@ -4,9 +4,9 @@ urllib3.disable_warnings()
 def main_app(access_token, refresh_token):
     doc_url = 'https://app.drchrono.com/api/doctors'
     json_res = make_request(doc_url, access_token)
-    doc_id = json_res['results'][0]['id']
-    doc_firstname = json_res['results'][0]['first_name']
-    doc_lastname = json_res['results'][0]['last_name']
+    doc_id = json_res['results'][1]['id']
+    doc_firstname = json_res['results'][1]['first_name']
+    doc_lastname = json_res['results'][1]['last_name']
 
     while 1:
         print('---------------\nHello, Dr. ' + doc_lastname + '!\n')
@@ -38,6 +38,7 @@ def make_request(url, access_token):
     api_call_headers = {'Authorization': 'Bearer ' + access_token}
     api_call_response = requests.get(url, headers=api_call_headers, verify=False)
     api_json = api_call_response.json()
+    print("Response Code", api_call_response)
     return api_json
 
 print("DrDash 1.0")
