@@ -1,1 +1,1 @@
-web: gunicorn drchrono_proj.wsgi --log-file -
+web: gunicorn --pythonpath drchrono_proj.wsgi --log-file -
