@@ -1,1 +1,0 @@
-web: gunicorn --pythonpath drchrono_proj.wsgi --log-file -
