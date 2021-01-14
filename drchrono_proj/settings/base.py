@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'aepb5l&$l6_)_k-&drv2a_(@g6+&e37c)7i6+(y=5@v%&ryc!z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['drdash-dev.herokuapp.com', '127.0.0.1']
 
@@ -136,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/home_page.html'
+# LOGIN_REDIRECT_URL = '/home_page.html'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
