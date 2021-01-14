@@ -29,7 +29,7 @@ SECRET_KEY = 'aepb5l&$l6_)_k-&drv2a_(@g6+&e37c)7i6+(y=5@v%&ryc!z'
 DEBUG = True
 # DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['drdash-dev.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
