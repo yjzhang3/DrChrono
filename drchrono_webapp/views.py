@@ -1,17 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from drchrono_webapp.models import PatientInformation, DoctorInformation
-
-# USE .ENV FILE FOR API TOKENS AND KEYS
-
+import os
 import requests, json, datetime, pytz, subprocess, sys, urllib3
 urllib3.disable_warnings()
 
-API_PATIENTS = 'https://app.drchrono.com/api/patients'
-API_DOCTOR = 'https://app.drchrono.com/api/doctors'
-
-CLIENT_ID = 'gCVCP45fvAZqwlQvB6d4CUqEFlonrXTCjbr90BLm'
-CLIENT_SECRET = 'ZvfvYGFNkabOPiLhQYlxacUWS8c1mA6Sc8Ec0XEaPhaYBCXMy1l89qyXDqMA8XbAQCHmnfuEf6BchB9WGBaeTTkpRe4B7Y9HlJVbAIR1NLVmkpwXQ3b0Vh3ax1LIQM3R'
+API_PATIENTS = os.getenv('API_PATIENTS')
+API_DOCTOR = os.getenv('API_DOCTOR')
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 
 def make_request(url, access_token):
 	print("make_request called")
@@ -33,11 +30,11 @@ def home_page(request):
 	splitted = request_p.split('code=')
 	print()
 	print("------------splitted: ", splitted)
-	code = splitted[1]
+	code = splitted[1] # change redirect uri to https://drdash.herokuapp.com/drchrono_webapp/home
 	response = requests.post('https://drchrono.com/o/token/', data={
     		'code': code,
     		'grant_type': 'authorization_code',
-    		'redirect_uri': 'http://127.0.0.1:8000/drchrono_webapp/home',
+    		'redirect_uri': 'https://drdash.herokuapp.com/drchrono_webapp/home',
     		'client_id': CLIENT_ID,
     		'client_secret': CLIENT_SECRET,
 	})
@@ -75,7 +72,7 @@ def home_page(request):
 		)
 
 	if code:
-		response = render(request, "home.html", {"user":doctor})
+		response = render(request, "home.html", {"user":doctor}) # change this to updated home.html
 	else:
 		response = render(request, "login_fail.html")
 	return response
