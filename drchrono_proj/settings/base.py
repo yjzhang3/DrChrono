@@ -26,8 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'aepb5l&$l6_)_k-&drv2a_(@g6+&e37c)7i6+(y=5@v%&ryc!z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG_PROPAGATE_EXCEPTIONS = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['drdash-dev.herokuapp.com', '127.0.0.1']
 
@@ -104,11 +103,14 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd7g122tj6n6t25',
+        'HOST': 'ec2-52-205-61-60.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'cdrtbcdajzsngf',
+        'PASSWORD': '54cd4cbd3136f3eb169a0527123e48cf591bc58507f39f1c0f52c487fa358d62'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
