@@ -72,7 +72,7 @@ def home_page(request):
 		)
 
 	if code:
-		response = render(request, "home.html", {"user":doctor}) # change this to updated home.html
+		response = render(request, "DC_Main_Page.html", {"user":doctor})
 	else:
 		response = render(request, "login_fail.html")
 	return response

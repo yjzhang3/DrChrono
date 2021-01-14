@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap Portfolio Page Template</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-4.4.1.css'}" rel="stylesheet">
+    
+    <!-- Django -->
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <!-- End of Django -->
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -77,17 +83,17 @@
           </div>
         </div>
         <div class="row mt-2">
-          <div class="col-md-3 col-6"><img class="img-fluid float-right" src="images/200x200.gif" alt=""></div>
-          <div class="col-md-3 col-6"><img class="img-fluid float-left" src="images/200x200.gif" alt=""></div>
-          <div class="col-md-3 col-6 mt-md-0 mt-1"><img class="img-fluid float-right" src="images/200x200.gif" alt=""></div>
-          <div class="col-md-3 col-6 mt-md-0 mt-1"><img class="img-fluid float-left" src="images/200x200.gif" alt=""></div>
+          <div class="col-md-3 col-6"><img class="img-fluid float-right" src="{% static 'images/200x200.gif'}" alt=""></div>
+          <div class="col-md-3 col-6"><img class="img-fluid float-left" src="{% static 'images/200x200.gif'}" alt=""></div>
+          <div class="col-md-3 col-6 mt-md-0 mt-1"><img class="img-fluid float-right" src="{% static 'images/200x200.gif'}" alt=""></div>
+          <div class="col-md-3 col-6 mt-md-0 mt-1"><img class="img-fluid float-left" src="{% static 'images/200x200.gif'}" alt=""></div>
         </div>
         <hr>
         <div class="row">
-          <div class="col-md-3 col-6"><img class="img-fluid float-right" src="images/200x200.gif" alt=""></div>
-          <div class="col-md-3 col-6"><img class="img-fluid float-left" src="images/200x200.gif" alt=""></div>
-          <div class="col-md-3 col-6 mt-md-0 mt-1"><img class="img-fluid float-right" src="images/200x200.gif" alt=""></div>
-          <div class="col-md-3 col-6 mt-md-0 mt-1"><img class="img-fluid float-left" src="images/200x200.gif" alt=""></div>
+          <div class="col-md-3 col-6"><img class="img-fluid float-right" src="{% static 'images/200x200.gif'}" alt=""></div>
+          <div class="col-md-3 col-6"><img class="img-fluid float-left" src="{% static 'images/200x200.gif'}" alt=""></div>
+          <div class="col-md-3 col-6 mt-md-0 mt-1"><img class="img-fluid float-right" src="{% static 'images/200x200.gif'}" alt=""></div>
+          <div class="col-md-3 col-6 mt-md-0 mt-1"><img class="img-fluid float-left" src="{% static 'images/200x200.gif'}" alt=""></div>
         </div>
       </div>
     </section>
@@ -143,9 +149,9 @@
       </div>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
+    <script src="{% static 'js/jquery-3.4.1.min.js'}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.4.1.js"></script>
+    <script src="{% static 'js/popper.min.js'}"></script>
+    <script src="{% static 'js/bootstrap-4.4.1.js'}"></script>
   </body>
 </html>
