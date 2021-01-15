@@ -18,9 +18,9 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    path('^admin/', admin.site.urls),
-    path('^$', TemplateView.as_view(template_name='login_page.html'), name='login'),
-    path('^home', TemplateView.as_view(template_name='DC_Main_Page.html'), name='home'),
+    path(r'^admin/', admin.site.urls),
+    path(r'^$', TemplateView.as_view(template_name='login_page.html'), name='login'),
+    path(r'^home', TemplateView.as_view(template_name='DC_Main_Page.html'), name='home'),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]
 
