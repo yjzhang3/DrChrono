@@ -36,13 +36,12 @@ def view_page(request):
 		splitted = request_p.split('code=')
 		print()
 		print("------------splitted: ", splitted)
-		code = splitted[1]
-	elif resquest.method == 'GET' and code:
+	elif resquest.method == 'GET' and len(splitted) > 1:
 		# request_p = request.build_absolute_uri()
 		# splitted = request_p.split('code=')
 		# print()
 		# print("------------splitted: ", splitted)
-		# code = splitted[1]
+		code = splitted[1]
 		response = requests.post('https://drchrono.com/o/token/', data={
 				'code': code,
 				'grant_type': 'authorization_code',
