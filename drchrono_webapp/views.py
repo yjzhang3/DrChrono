@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from drchrono_webapp.models import PatientInformation, DoctorInformation
 import os
 import requests, json, datetime, pytz, subprocess, sys, urllib3
@@ -27,7 +27,7 @@ def make_request(url, access_token):
 # request.method == 'POST' for when using Django-OAuth 2.0
 # def home_page(request):
 def view_page(request):
-	if request.method == 'POST':
+	if request.method == 'GET':
 		response = render(request, "login_page.html")
 	else:
 		request_p = request.build_absolute_uri()
