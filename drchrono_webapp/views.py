@@ -79,4 +79,5 @@ def view_page(request):
 			response = render(request, "DC_Main_Page.html", {"user":doctor})
 		else:
 			response = render(request, "login_fail.html")
-		return response
+	
+	return response
