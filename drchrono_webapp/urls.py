@@ -8,9 +8,11 @@ from django.views.generic.base import TemplateView
 
 app_name = 'drchrono'
 urlpatterns = [
-    # path('', login_page, name="login"),
-    # path('', home_page, name="home"),
-    path('', TemplateView.as_view(template_name='login_page.html'), name='login')
     path('', view_page),
-    # path('', include('django.contrib.auth.urls')),
 ]
+
+# urlpatterns = [
+#     path('', login_page, name="login"),
+#     path('', home_page, name="home"),
+#     path('', include('django.contrib.auth.urls')),
+# ]
