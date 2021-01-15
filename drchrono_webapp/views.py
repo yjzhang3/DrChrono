@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from drchrono_webapp.models import PatientInformation, DoctorInformation
 import os
+import dotenv
 import requests, json, datetime, pytz, subprocess, sys, urllib3
 urllib3.disable_warnings()
+load_dotenv()
 
 API_PATIENTS = os.getenv('API_PATIENTS')
 API_DOCTOR = os.getenv('API_DOCTOR')
