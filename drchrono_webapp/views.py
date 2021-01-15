@@ -76,7 +76,8 @@ def view_page(request):
 			)
 
 		if code:
-			response = render(request, "DC_Main_Page.html", {"user":doctor})
+			# response = render(request, "DC_Main_Page.html", {"user":doctor})
+			response = redirect('/home', 'DC_Main_Page.html', {'user':doctor})
 		else:
 			response = render(request, "login_fail.html")
 	
