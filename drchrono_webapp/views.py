@@ -34,7 +34,7 @@ def home_page(request):
 	response = requests.post('https://drchrono.com/o/token/', data={
     		'code': code,
     		'grant_type': 'authorization_code',
-    		'redirect_uri': 'https://drdash.herokuapp.com/drchrono_webapp/home',
+    		'redirect_uri': 'https://drdash.herokuapp.com/home',
     		'client_id': CLIENT_ID,
     		'client_secret': CLIENT_SECRET,
 	})
