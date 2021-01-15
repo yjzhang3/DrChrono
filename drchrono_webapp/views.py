@@ -30,14 +30,19 @@ def make_request(url, access_token):
 # request.method == 'POST' for when using Django-OAuth 2.0
 # def home_page(request):
 def view_page(request):
-	# if request.method == 'GET':
-	# 	response = render(request, "login_page.html")
-	# else:
+	if request.method == 'GET':
+		response = render(request, "login_page.html")
 		request_p = request.build_absolute_uri()
 		splitted = request_p.split('code=')
 		print()
 		print("------------splitted: ", splitted)
-		code = splitted[1] # change redirect uri to https://drdash.herokuapp.com/
+		code = splitted[1]
+	elif resquest.method == 'GET' && code:
+		# request_p = request.build_absolute_uri()
+		# splitted = request_p.split('code=')
+		# print()
+		# print("------------splitted: ", splitted)
+		# code = splitted[1]
 		response = requests.post('https://drchrono.com/o/token/', data={
 				'code': code,
 				'grant_type': 'authorization_code',
@@ -77,10 +82,8 @@ def view_page(request):
 			patient, new_pat_obj = PatientInformation.objects.update_or_create(
 				patient_data_json=i,
 			)
-
-		if code:
-			response = render(request, "DC_Main_Page.html", {"user":doctor})
-		else:
-			response = render(request, "login_fail.html")
+		response = render(request, "DC_Main_Page.html", {"user":doctor})
+	else:
+		response = render(request, "login_fail.html")
 	
 	return response
