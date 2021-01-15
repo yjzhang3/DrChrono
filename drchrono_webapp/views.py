@@ -36,53 +36,55 @@ def view_page(request):
 		splitted = request_p.split('code=')
 		print()
 		print("------------splitted: ", splitted)
-	elif resquest.method == 'GET' and len(splitted) > 1:
-		# request_p = request.build_absolute_uri()
-		# splitted = request_p.split('code=')
-		# print()
-		# print("------------splitted: ", splitted)
-		code = splitted[1]
-		response = requests.post('https://drchrono.com/o/token/', data={
-				'code': code,
-				'grant_type': 'authorization_code',
-				'redirect_uri': 'https://drdash.herokuapp.com/',
-				'client_id': CLIENT_ID,
-				'client_secret': CLIENT_SECRET,
-		})
-		response.raise_for_status()
-		data = response.json()
+		print(len(splitted))
+		if len(splitted) > 1:
+			# request_p = request.build_absolute_uri()
+			# splitted = request_p.split('code=')
+			# print()
+			# print("------------splitted: ", splitted)
+			code = splitted[1]
+			response = requests.post('https://drchrono.com/o/token/', data={
+					'code': code,
+					'grant_type': 'authorization_code',
+					'redirect_uri': 'https://drdash.herokuapp.com/',
+					'client_id': CLIENT_ID,
+					'client_secret': CLIENT_SECRET,
+			})
+			response.raise_for_status()
+			data = response.json()
 
-		# Save these in your database associated with the user
-		access_token = data['access_token']
-		refresh_token = data['refresh_token']
-		print("ACCESS TOKEN: ", access_token)
-		print("REFRESH TOKEN: ", refresh_token)
-		expires_timestamp = datetime.datetime.now(pytz.utc) + datetime.timedelta(seconds=data['expires_in'])
-		print('---------CODE: ', code)
-		print('---------DATA: ', data)
-		
-		# connect api call data to data models
-		json_res = make_request(API_DOCTOR, access_token) # --!
-		print(json_res)
-		doctor, new_doc_obj = DoctorInformation.objects.update_or_create(
-			doctor_id=json_res['results'][0]['id'],
-			doctor_first_name=json_res['results'][0]['first_name'],
-			doctor_last_name=json_res['results'][0]['last_name'],
-			doctor_data_json=json_res['results'][0]
-			)
-		doctor.save()
-		print("DOCTOR INFO: ", doctor)
-		
-		json_res = make_request(API_PATIENTS, access_token) # --!
-		for i in range(len(json_res['results'])):
-			print('PATIENT ', i)
-			for key, value in json_res['results'][i].items():
-				print(key, ":", value)
-			patient, new_pat_obj = PatientInformation.objects.update_or_create(
-				patient_data_json=i,
-			)
-		response = render(request, "home.html", {"user":doctor})
+			# Save these in your database associated with the user
+			access_token = data['access_token']
+			refresh_token = data['refresh_token']
+			print("ACCESS TOKEN: ", access_token)
+			print("REFRESH TOKEN: ", refresh_token)
+			expires_timestamp = datetime.datetime.now(pytz.utc) + datetime.timedelta(seconds=data['expires_in'])
+			print('---------CODE: ', code)
+			print('---------DATA: ', data)
+			
+			# connect api call data to data models
+			json_res = make_request(API_DOCTOR, access_token) # --!
+			print(json_res)
+			doctor, new_doc_obj = DoctorInformation.objects.update_or_create(
+				doctor_id=json_res['results'][0]['id'],
+				doctor_first_name=json_res['results'][0]['first_name'],
+				doctor_last_name=json_res['results'][0]['last_name'],
+				doctor_data_json=json_res['results'][0]
+				)
+			doctor.save()
+			print("DOCTOR INFO: ", doctor)
+			
+			json_res = make_request(API_PATIENTS, access_token) # --!
+			for i in range(len(json_res['results'])):
+				print('PATIENT ', i)
+				for key, value in json_res['results'][i].items():
+					print(key, ":", value)
+				patient, new_pat_obj = PatientInformation.objects.update_or_create(
+					patient_data_json=i,
+				)
+			response = render(request, "DC_Main_Page.html", {"user":doctor})
 	else:
 		response = render(request, "login_fail.html")
 	
+	print(response)
 	return response
