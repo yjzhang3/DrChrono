@@ -17,15 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 
-urlpatterns = [
-    path(r'^admin/', admin.site.urls),
-    path(r'^$', TemplateView.as_view(template_name='login_page.html'), name='login'),
-    path(r'^home', TemplateView.as_view(template_name='DC_Main_Page.html'), name='home'),
-    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-]
-
 # urlpatterns = [
-#     path('drchrono_webapp/', include('drchrono_webapp.urls')),
-#     path('admin/', admin.site.urls),
+#     path(r'^admin/', admin.site.urls),
+#     path(r'^$', TemplateView.as_view(template_name='login_page.html'), name='login'),
+#     path(r'^home', TemplateView.as_view(template_name='DC_Main_Page.html'), name='home'),
 #     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 # ]
+
+urlpatterns = [
+    path('/', include('drchrono_webapp.urls')),
+    path('admin/', admin.site.urls),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+]
