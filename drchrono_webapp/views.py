@@ -37,7 +37,7 @@ def view_page(request):
 		print()
 		print("------------splitted: ", splitted)
 		code = splitted[1]
-	elif resquest.method == 'GET' && code:
+	elif resquest.method == 'GET' and code:
 		# request_p = request.build_absolute_uri()
 		# splitted = request_p.split('code=')
 		# print()
