@@ -7,8 +7,11 @@ urllib3.disable_warnings()
 
 API_PATIENTS = os.getenv('API_PATIENTS')
 API_DOCTOR = os.getenv('API_DOCTOR')
-CLIENT_ID = os.getenv('CLIENT_ID')
-CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+# CLIENT_ID = os.getenv('CLIENT_ID')
+# CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+
+CLIENT_ID = 'RmxLsz3PqHVeEPBTtGw61cMVBYe8B0lLmKM7pHfV'
+CLIENT_SECRET = '9ynHMLp9e7ZG45bkQyNbItlYLTwfyrkB2MXeaPOCMmt0W55Q73qezR7H9b2JZDrvlqFNs4FqeIE38OYnXbCmOhOc4Xn44kcpvsFcqGBsGdel9NNka6bxVs8GnGwqavu6'
 
 def make_request(url, access_token):
 	print("make_request called")
@@ -38,7 +41,7 @@ def view_page(request):
 		response = requests.post('https://drchrono.com/o/token/', data={
 				'code': code,
 				'grant_type': 'authorization_code',
-				'redirect_uri': 'https://drdash.herokuapp.com/home',
+				'redirect_uri': 'https://drdash.herokuapp.com/',
 				'client_id': CLIENT_ID,
 				'client_secret': CLIENT_SECRET,
 		})
@@ -76,8 +79,8 @@ def view_page(request):
 			)
 
 		if code:
-			# response = render(request, "DC_Main_Page.html", {"user":doctor})
-			response = redirect('/home', 'DC_Main_Page.html', {'user':doctor})
+			response = render(request, "DC_Main_Page.html", {"user":doctor})
+			# response = redirect('/home', 'DC_Main_Page.html', {'user':doctor})
 		else:
 			response = render(request, "login_fail.html")
 	
