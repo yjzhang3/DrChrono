@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from drchrono_webapp.models import PatientInformation, DoctorInformation
 import os
-import dotenv
+from dotenv import load_dotenv
 import requests, json, datetime, pytz, subprocess, sys, urllib3
 urllib3.disable_warnings()
 load_dotenv()
