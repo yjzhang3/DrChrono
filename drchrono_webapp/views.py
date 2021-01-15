@@ -30,7 +30,7 @@ def home_page(request):
 	splitted = request_p.split('code=')
 	print()
 	print("------------splitted: ", splitted)
-	code = splitted[1] # change redirect uri to https://drdash.herokuapp.com/drchrono_webapp/home
+	code = splitted[1] # change redirect uri to https://drdash.herokuapp.com/home
 	response = requests.post('https://drchrono.com/o/token/', data={
     		'code': code,
     		'grant_type': 'authorization_code',
