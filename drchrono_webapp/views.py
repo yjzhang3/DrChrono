@@ -42,6 +42,8 @@ def view_page(request):
 			# splitted = request_p.split('code=')
 			# print()
 			# print("------------splitted: ", splitted)
+			print(API_DOCTOR)
+			print(API_PATIENTS)
 			code = splitted[1]
 			response = requests.post('https://drchrono.com/o/token/', data={
 					'code': code,
@@ -82,7 +84,7 @@ def view_page(request):
 				patient, new_pat_obj = PatientInformation.objects.update_or_create(
 					patient_data_json=i,
 				)
-			response = render(request, "DC_Main_Page.html", {"user":doctor})
+			response = render(request, "home.html", {"user":doctor})
 	else:
 		response = render(request, "login_fail.html")
 	
