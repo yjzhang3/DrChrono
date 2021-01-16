@@ -7,11 +7,13 @@ import requests, json, datetime, pytz, subprocess, sys, urllib3
 urllib3.disable_warnings()
 load_dotenv()
 
-API_PATIENTS = os.getenv('API_PATIENTS')
-API_DOCTOR = os.getenv('API_DOCTOR')
+# API_PATIENTS = os.getenv('API_PATIENTS')
+# API_DOCTOR = os.getenv('API_DOCTOR')
 # CLIENT_ID = os.getenv('CLIENT_ID')
 # CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 
+API_PATIENTS = 'https://app.drchrono.com/api/patients'
+API_DOCTOR = 'https://app.drchrono.com/api/doctors'
 CLIENT_ID = 'RmxLsz3PqHVeEPBTtGw61cMVBYe8B0lLmKM7pHfV'
 CLIENT_SECRET = '9ynHMLp9e7ZG45bkQyNbItlYLTwfyrkB2MXeaPOCMmt0W55Q73qezR7H9b2JZDrvlqFNs4FqeIE38OYnXbCmOhOc4Xn44kcpvsFcqGBsGdel9NNka6bxVs8GnGwqavu6'
 
