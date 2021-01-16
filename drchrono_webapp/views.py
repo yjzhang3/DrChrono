@@ -16,6 +16,8 @@ API_PATIENTS = 'https://app.drchrono.com/api/patients'
 API_DOCTOR = 'https://app.drchrono.com/api/doctors'
 CLIENT_ID = 'RmxLsz3PqHVeEPBTtGw61cMVBYe8B0lLmKM7pHfV'
 CLIENT_SECRET = '9ynHMLp9e7ZG45bkQyNbItlYLTwfyrkB2MXeaPOCMmt0W55Q73qezR7H9b2JZDrvlqFNs4FqeIE38OYnXbCmOhOc4Xn44kcpvsFcqGBsGdel9NNka6bxVs8GnGwqavu6'
+REDIRECT_URI = 'https://drdash.herokuapp.com/'
+# REDIRECT_URI = 'http://127.0.0.1:8000/'
 
 def make_request(url, access_token):
 	print("make_request called")
@@ -52,7 +54,7 @@ def view_page(request):
 			response = requests.post('https://drchrono.com/o/token/', data={
 					'code': code,
 					'grant_type': 'authorization_code',
-					'redirect_uri': 'https://drdash.herokuapp.com/',
+					'redirect_uri': REDIRECT_URI,
 					'client_id': CLIENT_ID,
 					'client_secret': CLIENT_SECRET,
 			})
