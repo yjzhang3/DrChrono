@@ -90,8 +90,8 @@ def view_page(request):
 				patient, new_pat_obj = PatientInformation.objects.update_or_create(
 					patient_data_json=i,
 				)
-			# response = render(request, "DC_Main_Page.html", {"user":doctor})
-			response = render(request, "DC_Main_Page.html")
+			response = render(request, "DC_Main_Page.html", {"user":doctor})
+			# response = render(request, "DC_Main_Page.html")
 	else:
 		response = render(request, "login_fail.html")
 	
