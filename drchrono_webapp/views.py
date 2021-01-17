@@ -11,13 +11,12 @@ API_PATIENTS = os.getenv('API_PATIENTS')
 API_DOCTOR = os.getenv('API_DOCTOR')
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
-REDIRECT_URI = os.getenv('REDIRECT_URI')
 
 # API_PATIENTS = 'https://app.drchrono.com/api/patients'
 # API_DOCTOR = 'https://app.drchrono.com/api/doctors'
 # CLIENT_ID = 'gCVCP45fvAZqwlQvB6d4CUqEFlonrXTCjbr90BLm'
 # CLIENT_SECRET = 'ZvfvYGFNkabOPiLhQYlxacUWS8c1mA6Sc8Ec0XEaPhaYBCXMy1l89qyXDqMA8XbAQCHmnfuEf6BchB9WGBaeTTkpRe4B7Y9HlJVbAIR1NLVmkpwXQ3b0Vh3ax1LIQM3R'
-# REDIRECT_URI = 'https://drdash.herokuapp.com/'
+REDIRECT_URI = 'https://drdash.herokuapp.com/'
 # REDIRECT_URI = 'http://127.0.0.1:8000/'
 
 def make_request(url, access_token):
