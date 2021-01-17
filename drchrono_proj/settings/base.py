@@ -26,13 +26,14 @@ load_dotenv()
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'aepb5l&$l6_)_k-&drv2a_(@g6+&e37c)7i6+(y=5@v%&ryc!z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['drdash-dev.herokuapp.com', '127.0.0.1']
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ['drdash.herokuapp.com', '127.0.0.1']
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
 
 # Application definition
 
