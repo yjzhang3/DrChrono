@@ -11,6 +11,7 @@ API_PATIENTS = os.getenv('API_PATIENTS')
 API_DOCTOR = os.getenv('API_DOCTOR')
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+REDIRECT_URI = os.getenv('REDIRECT_URI')
 
 # API_PATIENTS = 'https://app.drchrono.com/api/patients'
 # API_DOCTOR = 'https://app.drchrono.com/api/doctors'
