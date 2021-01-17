@@ -14,8 +14,8 @@ load_dotenv()
 
 API_PATIENTS = 'https://app.drchrono.com/api/patients'
 API_DOCTOR = 'https://app.drchrono.com/api/doctors'
-CLIENT_ID = 'RmxLsz3PqHVeEPBTtGw61cMVBYe8B0lLmKM7pHfV'
-CLIENT_SECRET = '9ynHMLp9e7ZG45bkQyNbItlYLTwfyrkB2MXeaPOCMmt0W55Q73qezR7H9b2JZDrvlqFNs4FqeIE38OYnXbCmOhOc4Xn44kcpvsFcqGBsGdel9NNka6bxVs8GnGwqavu6'
+CLIENT_ID = 'gCVCP45fvAZqwlQvB6d4CUqEFlonrXTCjbr90BLm'
+CLIENT_SECRET = 'ZvfvYGFNkabOPiLhQYlxacUWS8c1mA6Sc8Ec0XEaPhaYBCXMy1l89qyXDqMA8XbAQCHmnfuEf6BchB9WGBaeTTkpRe4B7Y9HlJVbAIR1NLVmkpwXQ3b0Vh3ax1LIQM3R'
 REDIRECT_URI = 'https://drdash.herokuapp.com/'
 # REDIRECT_URI = 'http://127.0.0.1:8000/'
 
