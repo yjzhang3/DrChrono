@@ -10,7 +10,7 @@ def main_app(access_token, refresh_token):
 
     while 1:
         print('---------------\nHello, Dr. ' + doc_lastname + '!\n')
-        print('1. Print all patients (lengthy!)\n2. Print doctor information\n3. Search for a patient\n\n0. Exit\n\n')
+        print('1. Print all patients (lengthy!)\n2. Print doctor information\n3. Search for a patient\n4. Look up patient information using patient ID\n5. TODO Send a quick message using patient ID\n\n0. Exit\n\n')
         option = input('DrDash Terminal > ')
 
         if option=='0':
@@ -29,18 +29,10 @@ def main_app(access_token, refresh_token):
                 for key, value in json_res['results'][i].items():
                     print(key, ":", value)
         elif option=='3':
-            tekr = 0
-            searchres = []
             searchstring = input("Enter the search string: ")
             test_api_url = 'https://app.drchrono.com/api/patients'
             json_res = make_request(test_api_url, access_token)
-            for i in range(len(json_res['results'])):
-                for key, value in json_res['results'][i].items():
-                    if key=='first_name' or key=='last_name':
-                        newval = value.lower()
-                        if searchstring.lower()==newval.lower():
-                            searchres.insert(tekr, json_res['results'][i]['first_name'] + " " + json_res['results'][i]['last_name'])
-                            tekr = tekr + 1
+            searchres = search(json_res, searchstring)
             length = len(searchres)
             if length < 1:
                 print("No results")
@@ -48,16 +40,40 @@ def main_app(access_token, refresh_token):
                 print("Found " + str(length) + " result(s)")
                 for i in range(length):
                     print(searchres[i])
-        else:
-            print('unrecognized command')
+        elif option=='4':
+            patient_id = input("Please enter patient ID: ")
+            if len(str(patient_id)) > 8 or str(patient_id).isdigit() != 1:
+                print("This is not a valid patient ID!")
+            else:
+                url = "https://app.drchrono.com/api/patients/" + str(patient_id)
+                json_file = make_request(url, access_token)
+                print("Patient info being shown for patient ID " + str(patient_id))
+                print("First name: " + json_file['first_name'])
+                print("Last name: " + json_file['last_name'])
+                print("Gender: " + json_file['gender'])
+                print("Cell phone: " + json_file['cell_phone'])
+                print("Full address: " + json_file['address'] + ", " + json_file['city'] + ", " + json_file['state'])
+                print("Pharmacy ID: " + json_file['default_pharmacy'])
 
         # print(api_call_response.text)
-
+        
 def make_request(url, access_token):
     api_call_headers = {'Authorization': 'Bearer ' + access_token}
     api_call_response = requests.get(url, headers=api_call_headers, verify=False)
     api_json = api_call_response.json()
     return api_json
+
+def search(json_file, searchstring):
+    searchres = []
+    tekr = 0
+    for i in range(len(json_file['results'])):
+        for key, value in json_file['results'][i].items():
+            if key=='first_name' or key=='last_name':
+                newval = value.lower()
+                if searchstring.lower()==newval.lower():
+                    searchres.insert(tekr, json_file['results'][i]['first_name'] + " " + json_file['results'][i]['last_name'] + "," + str(json_file['results'][i]['id']))
+                    tekr = tekr + 1
+    return searchres
 
 print("DrDash 1.01")
 print("----------")
