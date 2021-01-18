@@ -29,18 +29,25 @@ def main_app(access_token, refresh_token):
                 for key, value in json_res['results'][i].items():
                     print(key, ":", value)
         elif option=='3':
-            searchres = -1
-            searchsurname = input("Enter the surname of your patient: ")
+            tekr = 0
+            searchres = []
+            searchstring = input("Enter the search string: ")
             test_api_url = 'https://app.drchrono.com/api/patients'
             json_res = make_request(test_api_url, access_token)
             for i in range(len(json_res['results'])):
                 for key, value in json_res['results'][i].items():
-                    if searchsurname==value and key=='last_name':
-                        searchres = i
-            if searchres==-1:
+                    if key=='first_name' or key=='last_name':
+                        newval = value.lower()
+                        if searchstring.lower()==newval.lower():
+                            searchres.insert(tekr, json_res['results'][i]['first_name'] + " " + json_res['results'][i]['last_name'])
+                            tekr = tekr + 1
+            length = len(searchres)
+            if length < 1:
                 print("No results")
             else:
-                print(json_res['results'][searchres].items())
+                print("Found " + str(length) + " result(s)")
+                for i in range(length):
+                    print(searchres[i])
         else:
             print('unrecognized command')
 
@@ -59,16 +66,15 @@ answer = input("Are you logged in? (yes/debug/exit): ")
 if answer=='yes':
     access_token = input('access_token: ')
     refresh_token = input('refresh token: ')
-    expires_timestamp = input('expires_timestamp: ')
     main_app(access_token, refresh_token)
 elif answer=='no':
     code = input('code: ')
     response = requests.post('https://drchrono.com/o/token/', data={
         'code': code,
         'grant_type': 'authorization_code',
-        'redirect_uri': 'http://127.0.0.1:8000/drchrono_webapp/home',
-        'client_id': 'BjMyUxjjeZSDy61Y1ZdGBdhVch2yCSLv5w4fY4ae',
-        'client_secret': 'BGcAyd56sLYmr87v8IS1UrIZMn2fIK7ma9AIAiRX0Wo93Um2WIB1IdDZZ9OOZAjXkUKlBNahZL0qZgmAju0gHJVc4GwdZpcnR55Fd5ujraA4liBJehNwhWKmLLbOOiZD',
+        'redirect_uri': 'https://drdash.herokuapp.com/',
+        'client_id': 'gCVCP45fvAZqwlQvB6d4CUqEFlonrXTCjbr90BLm',
+        'client_secret': 'ZvfvYGFNkabOPiLhQYlxacUWS8c1mA6Sc8Ec0XEaPhaYBCXMy1l89qyXDqMA8XbAQCHmnfuEf6BchB9WGBaeTTkpRe4B7Y9HlJVbAIR1NLVmkpwXQ3b0Vh3ax1LIQM3R',
     })
     response.raise_for_status()
     data = response.json()
@@ -78,7 +84,7 @@ elif answer=='no':
     refresh_token = data['refresh_token']
     expires_timestamp = datetime.datetime.now(pytz.utc) + datetime.timedelta(seconds=data['expires_in'])
 elif answer=='debug':
-    main_app('Kuy5dQbqo9jSh5SFoirdZFXBx3rpOF', 'rBer32rOY1bfrLEiCoIx0XGOVL1MIK')
+    main_app('CCdp8mvLYMWNaVWRodrgx95BtaAkt6', 'ETQUgVbs6SmYWu6p2u82y9nF0vw3hX')
 elif answer=='exit':
     print('exiting...')
 else:
