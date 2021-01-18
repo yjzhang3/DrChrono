@@ -154,7 +154,7 @@ ul li:hover a {
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-.parallax {
+/* .parallax {
 	color: #FFFFFF;
 	text-align: right;
 	padding-right: 100px;
@@ -174,7 +174,7 @@ ul li:hover a {
 	margin-right: 0px;
 	margin-bottom: 0px;
 	margin-left: 0px;
-}
+} */
 /* More info */
 footer {
 	background-color: #FFFFFF;
@@ -304,7 +304,7 @@ nav ul li {
 	width: 100%;
 	margin-top: 0px;
 }
-.parallax {
+/* .parallax {
 	text-align: center;
 	margin-top: 0px;
 	margin-right: 0px;
@@ -329,7 +329,7 @@ nav ul li {
 	margin-left: 12px;
 	float: none;
 	text-align: center;
-}
+} */
 .banner {
 	background-color: #2D9AB7;
 	background-image: none;
@@ -397,7 +397,7 @@ nav ul li {
 	width: 100%;
 	margin-top: 0px;
 }
-.parallax {
+/* .parallax {
 	text-align: center;
 	margin-top: 0px;
 	margin-right: 0px;
@@ -422,11 +422,11 @@ nav ul li {
 	float: none;
 	width: 100%;
 	text-align: center;
-}
+} */
 .thumbnail {
 	width: 50%;
 }
-.parallax {
+/* .parallax {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
@@ -443,7 +443,7 @@ nav ul li {
 	margin-left: 0px;
 	width: 100%;
 	padding-top: 30px;
-}
+} */
 .banner {
 	padding-left: 20px;
 	padding-right: 20px;
