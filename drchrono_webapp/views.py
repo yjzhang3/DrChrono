@@ -88,8 +88,8 @@ def view_page(request):
 				for key, value in json_res['results'][i].items():
 					print(key, ":", value)
 				patient, new_pat_obj = PatientInformation.objects.update_or_create(
-					patient_first_name=i['first_name']
-					patient_last_name=i['last_name']
+					patient_first_name=i['first_name'],
+					patient_last_name=i['last_name'],
 					patient_data_json=i,
 				)
 			response = render(request, "Home_jan18.html", {"user":doctor}, {"patient":patient})
