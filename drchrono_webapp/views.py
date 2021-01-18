@@ -75,9 +75,9 @@ def view_page(request):
 			print(json_res)
 			doctor, new_doc_obj = DoctorInformation.objects.update_or_create(
 				doctor_id=json_res['results'][0]['id'],
-				doctor_first_name=json_res['results'][0]['first_name'],
-				doctor_last_name=json_res['results'][0]['last_name'],
-				doctor_data_json=json_res['results'][0]
+				doctor_first_name=json_res['results']['first_name'],
+				doctor_last_name=json_res['results']['last_name'],
+				doctor_data_json=json_res['results']
 				)
 			doctor.save()
 			print("DOCTOR INFO: ", doctor)
@@ -88,6 +88,8 @@ def view_page(request):
 				for key, value in json_res['results'][i].items():
 					print(key, ":", value)
 				patient, new_pat_obj = PatientInformation.objects.update_or_create(
+					patient_first_name=i['first_name']
+					patient_last_name=i['last_name']
 					patient_data_json=i,
 				)
 			response = render(request, "Home_jan18.html", {"user":doctor}, {"patient":patient})

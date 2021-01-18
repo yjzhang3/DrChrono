@@ -3,8 +3,8 @@ from django import forms
 from jsonfield import JSONField
 
 class PatientInformation(models.Model):
-    # patient_first_name = models.CharField(max_length=100)
-    # patient_last_name = models.CharField(max_length=100)
+    patient_first_name = models.CharField(max_length=100)
+    patient_last_name = models.CharField(max_length=100)
     patient_data_json = JSONField(default={})
 
     def __str__(self):
