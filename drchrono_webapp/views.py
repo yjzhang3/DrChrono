@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from drchrono_webapp.models import PatientInformation, DoctorInformation
 import os
 from dotenv import load_dotenv
@@ -13,8 +13,8 @@ load_dotenv()
 # CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 
 API_PATIENTS = 'https://app.drchrono.com/api/patients'
-# API_DOCTOR = 'https://app.drchrono.com/api/doctors'
-API_DOCTOR = 'https://app.drchrono.com/api/users/current'
+API_DOCTOR = 'https://app.drchrono.com/api/doctors'
+API_USER = 'https://app.drchrono.com/api/users/current'
 CLIENT_ID = 'gCVCP45fvAZqwlQvB6d4CUqEFlonrXTCjbr90BLm'
 CLIENT_SECRET = 'ZvfvYGFNkabOPiLhQYlxacUWS8c1mA6Sc8Ec0XEaPhaYBCXMy1l89qyXDqMA8XbAQCHmnfuEf6BchB9WGBaeTTkpRe4B7Y9HlJVbAIR1NLVmkpwXQ3b0Vh3ax1LIQM3R'
 REDIRECT_URI = 'https://drdash.herokuapp.com/'
@@ -29,6 +29,11 @@ def make_request(url, access_token):
 	api_json = api_call_response.json()
 	return api_json
 
+def get_response(url, access_token):
+	api_call_headers = {'Authorization': 'Bearer ' + access_token}
+	api_call_response = requests.get(url, headers=api_call_headers, verify=False)
+	return api_call_response
+
 # def login_page(request):
 #     response = render(request, "login_page.html")
 #     return response
@@ -39,16 +44,12 @@ def make_request(url, access_token):
 def view_page(request):
 	if request.method == 'GET':
 		response = render(request, "login_new.html")
-		request_p = request.build_absolute_uri()
-		splitted = request_p.split('code=')
-		print()
-		print("------------splitted: ", splitted)
-		print(len(splitted))
-		if len(splitted) > 1:
-			# request_p = request.build_absolute_uri()
-			# splitted = request_p.split('code=')
-			# print()
-			# print("------------splitted: ", splitted)
+		response_code = get_response(API_USER, access_token) # check if user is authorized
+		if response_code == 200 or response_code == 201 or response_code == 204:
+			request_p = request.build_absolute_uri()
+			splitted = request_p.split('code=')
+			print()
+			print("------------splitted: ", splitted)
 			print(API_DOCTOR)
 			print(API_PATIENTS)
 			code = splitted[1]
@@ -91,8 +92,10 @@ def view_page(request):
 				)
 			response = render(request, "Home_jan18.html", {"user":doctor})
 			# response = render(request, "DC_Main_Page.html")
+		else:
+			response = render(request, "login_fail.html")
 	else:
-		response = render(request, "login_fail.html")
+		return HttpResponseNotFound('<h1> 404: Page Not Found </h1>')
 	
 	print('response: ',response)
 	return response
