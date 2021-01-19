@@ -69,7 +69,7 @@ def view_page(request):
 			expires_timestamp = datetime.datetime.now(pytz.utc) + datetime.timedelta(seconds=data['expires_in'])
 			print('---------CODE: ', code)
 			print('---------DATA: ', data)
-			
+			print('reponse code: ', response_code)
 			if response_code == 200 or response_code == 201 or response_code == 204:
 				# connect api call data to data models
 				json_res = make_request(API_DOCTOR, access_token) # --!
