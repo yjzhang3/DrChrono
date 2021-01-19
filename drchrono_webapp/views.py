@@ -75,7 +75,7 @@ def view_page(request):
 			json_res = make_request(API_DOCTOR, access_token) # --!
 			print('json_res for doctor: ' ,json_res, '\n')
 			doctor, new_doc_obj = DoctorInformation.objects.update_or_create(
-				doctor_data_json=json_res['results'][0]
+				doctor_data_json=json_res
 				)
 			doctor.save()
 			print("DOCTOR INFO: ", doctor)
