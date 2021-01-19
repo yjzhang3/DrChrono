@@ -72,7 +72,7 @@ def view_page(request):
 			
 			# connect api call data to data models
 			json_res = make_request(API_DOCTOR, access_token) # --!
-			print('json_res for doctor: 'json_res, '\n')
+			print('json_res for doctor: ' ,json_res, '\n')
 			doctor, new_doc_obj = DoctorInformation.objects.update_or_create(
 				doctor_data_json=json_res['results'][0]
 				)
@@ -80,7 +80,7 @@ def view_page(request):
 			print("DOCTOR INFO: ", doctor)
 			
 			json_res = make_request(API_PATIENTS, access_token) # --!
-			print('json_res for patients: 'json_res, '\n')
+			print('json_res for patients: ', json_res, '\n')
 			for i in range(len(json_res['results'])):
 				print('PATIENT ', i)
 				for key, value in json_res['results'][i].items():
