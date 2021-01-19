@@ -372,7 +372,6 @@ fieldset:disabled a.btn {
 	width: 40%;
 	text-align: center;
 	float: left;
-/*	margin-top: 15px;*/
 	margin-left: 35px;
 	margin-right: 35px;
 
@@ -382,9 +381,7 @@ fieldset:disabled a.btn {
 .footer_banner .thumbnail {
 	width: 25%;
 	text-align: center;
-	float: left;
-/*	margin-top: 15px;*/
-	
+	float: left;	
 }
 
 
@@ -401,7 +398,6 @@ fieldset:disabled a.btn {
 	margin-right: 0px;
 	margin-bottom: 0px;
 	margin-left: 10px;
-/*	color: #548687;*/
 	text-align:justify;
 }
 
@@ -424,7 +420,6 @@ fieldset:disabled a.btn {
 .copyright {
 	text-align: center;
 	padding-top: 20px;
-/*	padding-bottom: 20px;*/
 	background-color: #F2F2F2;
 	color: #212529;
 	text-transform: uppercase;
@@ -433,37 +428,12 @@ fieldset:disabled a.btn {
 	border-top-width: 2px;
 }
 
-
-/*
-.copyright {
-	text-align: center;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	background-color: #717070;
-	color: #FFFFFF;
-	text-transform: uppercase;
-	font-weight: lighter;
-	letter-spacing: 2px;
-	border-top-width: 2px;
-}
-*/
-/*
-.footer_banner {
-	background-color: #B3B3B3;
-	padding-top: 60px;
-	padding-bottom: 60PX;
-	margin-bottom: 0px;
-	background-image: url(../images/pattern.png);
-	background-repeat: repeat;
-}
-*/
 .footer_banner {
 	background-color: #F2F2F2;
 	padding-top: 60px;
 	padding-bottom: 60PX;
 		margin-top: 16px;
 	margin-bottom: 0px;
-	background-image: url(../images/pattern.png);
 	background-repeat: repeat;
 	clear: both;
 	display: inline-block;
