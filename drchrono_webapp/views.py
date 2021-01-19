@@ -37,7 +37,7 @@ def make_request(url, access_token):
 # def home_page(request):
 def view_page(request):
 	if request.method == 'GET':
-		response = render(request, "login_latest.html")
+		response = render(request, "login_new.html")
 		request_p = request.build_absolute_uri()
 		splitted = request_p.split('code=')
 		print()
